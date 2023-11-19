@@ -25501,6 +25501,8 @@ body:not(.dark-version)
 
 .navbar-main {
     transition: box-shadow 0.25s ease-in, background-color 0.25s ease-in;
+    background-color: var(--bs-white);
+    color: black;
 }
 
 .navbar-main.fixed-top {
