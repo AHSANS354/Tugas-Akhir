@@ -36,22 +36,33 @@ class PaketController extends Controller
         //
         $request->validate([
             'nama'=>'required|unique:paket|max:30',
-            'deskripsi'=>'required|max:100|min:8',
+            'haircut'=>'required|numeric',
+            'keramas'=>'required|numeric',
+            'tonic'=>'required|numeric',
+            'creambath'=>'required|numeric',
             'harga'=>'required|numeric',
         ],[
             'nama.required'=>'Nama harus diisi!',
             'nama.unique'=>'Nama sudah ada!',
             'nama.max'=>'Maksimal 30 karakter!',
-            'deskripsi.required'=>'Deskripsi harus diisi!',
-            'deskripsi.max'=>'Maximal 100 karakter!',
-            'deskripsi.min'=>'Minimal 8 karakter!',
+            'haircut.required'=>'Haircut harus diisi!',
+            'haircut.numeric'=>'Haircut hanya boleh angka!',
+            'keramas.required'=>'Keramas harus diisi!',
+            'keramas.numeric'=>'Keramas hanya boleh angka!',
+            'tonic.required'=>'Tonic harus diisi!',
+            'tonic.numeric'=>'Tonic hanya boleh angka!',
+            'creambath.required'=>'Creambath harus diisi!',
+            'creambath.numeric'=>'Creambath hanya boleh angka!',
             'harga.required'=>'Harga harus diisi!',
             'harga.numeric'=>'Harap masukkan angka!'
         ]);
 
         $paket = new Paket;
         $paket->nama = $request->nama;
-        $paket->deskripsi = $request->deskripsi;
+        $paket->haircut = $request->haircut;
+        $paket->keramas = $request->keramas;
+        $paket->tonic = $request->tonic;
+        $paket->creambath = $request->creambath;
         $paket->harga = $request->harga;
         $paket->save();
         toast('Berhasil Menambahkan Paket!','success');

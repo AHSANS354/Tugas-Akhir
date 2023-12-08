@@ -16,10 +16,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        $user = User::join('role', 'role_id', '=', 'role.id')
-        ->select('user.*', 'role.nama as role')
-        ->get();
-        return view('admin.user.index', compact('user'));
+        $users = User::all();
+        return view('admin.user.index', compact('users'));
     }
 
     public function register()
@@ -168,7 +166,7 @@ class UserController extends Controller
         $user = User::find($id);
         // Hapus foto lama jika ada
     if ($user->foto) {
-        $oldPhotoPath = public_path('assets/img/user/' . $user->foto);
+        $oldPhotoPath = public_path('halaman/img/user/' . $user->foto);
         if (file_exists($oldPhotoPath)) {
             unlink($oldPhotoPath);
         }
