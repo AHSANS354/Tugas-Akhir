@@ -64,7 +64,7 @@
             <a href="{{url('/')}}" class="nav-item nav-link">Home</a>
             <a href="about.html" class="nav-item nav-link">Tentang</a>
             <a href="team.html" class="nav-item nav-link">Kontak</a>
-            <a href="gallery.html" class="nav-item nav-link">Gallery</a>
+            {{-- <a href="gallery.html" class="nav-item nav-link">Gallery</a> --}}
             @auth
             <div class="nav-item dropdown">
                 <a
@@ -74,7 +74,8 @@
                 {{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    <a href="/" class="dropdown-item"><i class="fa fa-user"></i> Profil</a>
+                    <a href="{{url('profile')}}" class="dropdown-item"><i class="fa fa-user"></i> Profil</a>
+                    <a href="{{url('booking')}}" class="dropdown-item"><i class="fas fa-bookmark"></i> Booking</a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out-alt"></i> {{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -93,9 +94,11 @@
                                 </li>
                             @endif
                 @endauth
+              </div>
             </div>
-          </div>
-          <a href="" class="btn btn-warning px-4"><strong>Booking</strong><br>Tanpa Antri</a>
+            <div class="m-3">
+              <a onclick="scrollToSection('paket')" class="btn btn-warning px-4 arah nav-link"><strong>Booking</strong><br>Tanpa Antri</a>
+            </div>
         </div>
       </nav>
     </div>
@@ -237,7 +240,7 @@
 
           <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
           Designed by
-          <a class="text-primary font-weight-bold" href="https://htmlcodex.com"
+          <a class="text-primary font-weight-bold" href="#"
             >HTML Codex</a
           >
           <br />Distributed By:
@@ -248,11 +251,17 @@
     <!-- Footer End -->
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-primary p-3 back-to-top"
-      ><i class="fa fa-angle-double-up"></i
-    ></a>
+    <a href="#" class="btn btn-primary p-3 back-to-top">
+      <i class="fa fa-angle-double-up"></i>
+    </a>
 
     <!-- JavaScript Libraries -->
+    <script>
+      function scrollToSection(sectionId) {
+          var targetElement = document.getElementById(sectionId);
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+  </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('halaman/lib/easing/easing.min.js')}}"></script>
@@ -266,5 +275,13 @@
 
     <!-- Template Javascript -->
     <script src="{{asset('halaman/js/main.js')}}"></script>
+
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Bootstrap Datepicker -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
   </body>
 </html>

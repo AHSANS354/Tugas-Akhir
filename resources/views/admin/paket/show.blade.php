@@ -13,8 +13,20 @@
             <div class="col-6">: {{$pkt->nama}}</div>
         </div>
         <div class="row m-3">
-            <div class="col-6">Deskripsi</div>
-            <div class="col-6">: {{$pkt->deskripsi}}</div>
+            <div class="col-6">Haircut</div>
+            <div class="col-6">: @if($pkt->haircut == 1) Iya @else Tidak @endif</div>
+        </div>
+        <div class="row m-3">
+            <div class="col-6">Keramas</div>
+            <div class="col-6">: @if($pkt->keramas == 1) Iya @else Tidak @endif</div>
+        </div>
+        <div class="row m-3">
+            <div class="col-6">Tonic</div>
+            <div class="col-6">: @if($pkt->tonic == 1) Iya @else Tidak @endif</div>
+        </div>
+        <div class="row m-3">
+            <div class="col-6">Creambath</div>
+            <div class="col-6">: @if($pkt->creambath == 1) Iya @else Tidak @endif</div>
         </div>
         <div class="row m-3">
             <div class="col-6">Harga</div>

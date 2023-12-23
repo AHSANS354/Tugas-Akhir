@@ -28,6 +28,12 @@ class User extends Authenticatable
 
     public $timestamps = false;
 
+     // Di dalam model User
+     public function customer()
+     {
+         return $this->hasOne(Customer::class);
+     }
+
     /**
      * The attributes that should be hidden for serialization.
      *

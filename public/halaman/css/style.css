@@ -10287,3 +10287,15 @@ a.text-dark:focus {
     padding: 0;
     list-style-type: none;
 }
+
+.garis {
+    width: 100%; /* Sesuaikan panjang garis sesuai kebutuhan Anda */
+    border: 2px solid gray; /* Warna dan ketebalan garis */
+}
+
+.login {
+    background-image: url(../img/bg-barber.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

@@ -11,7 +11,7 @@
             <p class="text-white mb-4">
                 Selamat datang di Barbershop kami. Kami hadir untuk memberikan pengalaman potong rambut yang istimewa dan pelayanan terbaik bagi setiap pelanggan. Kami percaya bahwa penampilan yang rapi dan percaya diri adalah kunci kesuksesan. Mari bergabung dengan kami dan rasakan kepuasan dari layanan kami. Terima kasih atas kepercayaan Anda.
             </p>
-            <a href="" class="btn btn-primary mt-1 py-3 px-5" style="color: #2b2b2b; font-weight: bold">Booking</a>
+            <a onclick="scrollToSection('paket')" class="btn btn-primary mt-1 py-3 px-5 arah" style="color: #2b2b2b; font-weight: bold">Booking</a>
           </div>
           <div class="col-lg-6 text-center text-lg-right p-4">
             <img class="img-fluid mt-5 rounded-60" src="{{asset('halaman/img/carousel-1.jpg')}}" alt="" />
@@ -178,12 +178,13 @@
             </p>
             <h1 class="mb-4">Paket yang dapat dipilih!</h1>
           </div>
-          <div class="row d-flex justify-content-between p-3">
+          <div class="row d-flex justify-content-between p-3" id="paket">
             @foreach ($pakets as $paket)
-            <div class="col-lg-3">
+            <div class="col-lg-3 mt-3">
               <div class="card border-0 shadow pb-2">
-                <div class="card-body @if($paket->nama == 'Epic') bg-success @elseif($paket->nama == 'Legend') bg-warning @elseif($paket->nama == 'Mythic') bg-danger @else bg-white @endif text-center">
-                  <h3 class="card-title">Paket {{$paket->nama}}</h3>
+                <img class="card-img-top p-4" src="{{asset('halaman/img/'.$paket->foto)}}" alt=""/>
+                <div class="card-body text-center">
+                  <h3 class="card-title">{{$paket->nama}}</h3>
                   <p class="card-text">
                     <strong>Rp.{{number_format($paket->harga,0,',','.')}}</strong>
                   </p>
@@ -230,7 +231,11 @@
                       <div class="col-8 py-1">Creambath</div>
                     </div>
                   </div>
-                <a href="" class="btn btn-primary px-4 mx-auto mb-4">Pilih Paket</a>
+                  @auth
+                  <a href="{{url('pesanan/'.$paket->id)}}" class="btn btn-primary px-4 mx-auto mb-4">Pilih Paket</a>
+                  @else
+                  <a class="btn btn-primary px-4 mx-auto mb-4" href="{{ route('login') }}"><i class="fa fa-sign-in-alt"></i> {{ __('Login') }}</a>
+                  @endauth
               </div>
             </div>
             @endforeach
@@ -238,88 +243,6 @@
         </div>
       </div>
       <!-- Class End -->
-  
-      <!-- Registration Start -->
-      {{-- <div class="container-fluid py-5">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-7 mb-5 mb-lg-0">
-              <p class="section-title pr-5">
-                <span class="pr-2">Book A Seat</span>
-              </p>
-              <h1 class="mb-4">Book A Seat For Your Kid</h1>
-              <p>
-                Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo
-                dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.
-                Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
-                dolor
-              </p>
-              <ul class="list-inline m-0">
-                <li class="py-2">
-                  <i class="fa fa-check text-success mr-3"></i>Labore eos amet
-                  dolor amet diam
-                </li>
-                <li class="py-2">
-                  <i class="fa fa-check text-success mr-3"></i>Etsea et sit dolor
-                  amet ipsum
-                </li>
-                <li class="py-2">
-                  <i class="fa fa-check text-success mr-3"></i>Diam dolor diam
-                  elitripsum vero.
-                </li>
-              </ul>
-              <a href="" class="btn btn-primary mt-4 py-2 px-4">Book Now</a>
-            </div>
-            <div class="col-lg-5">
-              <div class="card border-0">
-                <div class="card-header bg-secondary text-center p-4">
-                  <h1 class="text-white m-0">Book A Seat</h1>
-                </div>
-                <div class="card-body rounded-bottom bg-primary p-5">
-                  <form>
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        class="form-control border-0 p-4"
-                        placeholder="Your Name"
-                        required="required"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <input
-                        type="email"
-                        class="form-control border-0 p-4"
-                        placeholder="Your Email"
-                        required="required"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <select
-                        class="custom-select border-0 px-4"
-                        style="height: 47px"
-                      >
-                        <option selected>Select A Class</option>
-                        <option value="1">Class 1</option>
-                        <option value="2">Class 1</option>
-                        <option value="3">Class 1</option>
-                      </select>
-                    </div>
-                    <div>
-                      <button
-                        class="btn btn-secondary btn-block border-0 py-3"
-                        type="submit"
-                      >
-                        Book Now
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> --}}
-      <!-- Registration End -->
   
       <!-- Team Start -->
       <div class="container-fluid pt-5">
@@ -330,7 +253,7 @@
             </p>
             <h1 class="mb-4">Meet Our Barberman</h1>
           </div>
-          <div class="row d-flex justify-content-between">
+          <div class="row d-flex justify-content-center gap-5">
             @foreach ($capster as $barber)
             <div class="col-md-6 col-lg-3 text-center team mb-5">
                 <div

@@ -38,10 +38,10 @@
     </div>
   </div> 
   <div class="form-group row">
-    <label for="deskripsi" class="col-4 col-form-label">Deskripsi</label> 
+    <label for="jabatan" class="col-4 col-form-label">Jabatan</label> 
     <div class="col-6">
-      <input id="deskripsi" name="deskripsi" placeholder="Input deskripsi" type="text" class="form-control border-white mb-4 @error('deskripsi') is-invalid @enderror">
-      @error('deskripsi')
+      <input id="jabatan" name="jabatan" placeholder="Input jabatan" type="text" class="form-control border-white mb-4 @error('jabatan') is-invalid @enderror">
+      @error('jabatan')
           <div class="invalid-feedback">
             {{ $message }}
           </div>

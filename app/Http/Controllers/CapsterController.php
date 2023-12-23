@@ -37,7 +37,7 @@ class CapsterController extends Controller
             'nama'=>'required|unique:capster|max:45',
             'no_telp'=>'required|numeric',
             'email'=>'required|email',
-            'deskripsi'=>'max:50|min:6',
+            'jabatan'=>'nullable|max:20',
             'foto'=>'image|mimes:png,jpg,jpeg,svg|max:2048',
         ],
         [
@@ -48,9 +48,7 @@ class CapsterController extends Controller
             'no_telp.numeric'=>'Hanya boleh angka!',
             'email.required'=>'Email harus diisi!',
             'email.email'=>'Format email salah!',
-            'deskripsi.required'=>'Deskripsi harus diisi!',
-            'deskripsi.max'=>'Maximal 50 karakter!',
-            'deskripsi.min'=>'Minimal 6 karakter!',
+            'jabatan.max'=>'Maksimal 20 karakter!',
             'foto.image'=>'File yang dipilih bukan foto!',
             'foto.mimes'=>'Format foto hanya png, jpg dan svg!',
             'foto.max'=>'Ukuran maksimal 2MB!'
@@ -60,7 +58,7 @@ class CapsterController extends Controller
         $capster -> nama = $request->nama;
         $capster -> no_telp = $request->no_telp;
         $capster -> email = $request->email;
-        $capster-> deskripsi = $request->deskripsi;
+        $capster-> jabatan = $request->jabatan;
         if ($request->hasFile('foto')) {
             // Generate unique filename using timestamp
             $timestamp = now()->timestamp;

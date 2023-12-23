@@ -1,6 +1,6 @@
 @extends('halaman.app')
 @section('front')
-<section class="mt-5 pt-5">
+<section class="login mt-5 pt-5">
     <div class="container py-5 h-100">
       <div class="row d-flex align-items-center justify-content-center h-100">
         <div class="col-md-8 col-lg-7 col-xl-6">

@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\CapsterController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,7 @@ use App\Http\Controllers\BerandaController;
 
 Route::get('/', [BerandaController::class, 'index']);
 
-Route::middleware(['auth', 'role:admin-staff'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     
     Route::prefix('/admin')->group(function(){
         Route::get('/dashboard', [Admin::class, 'index']);
@@ -60,3 +62,14 @@ Route::middleware(['auth', 'role:admin-staff'])->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth', 'role:pelanggan'])->group(function () {
+    Route::get('pesanan/{id}', [BookingController::class, 'pesanan']);
+    Route::post('pesan/{paket}', [BookingController::class, 'pesanan_store']);
+    Route::get('checkout/{id}', [BookingController::class, 'checkout'])->middleware('customer.check');
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('profile/edit', [ProfileController::class, 'edit']);
+    Route::post('profile/store', [ProfileController::class, 'store']);
+    Route::get('success/{booking}', [BookingController::class, 'success']);
+    Route::get('booking', [BookingController::class, 'index']);
+});

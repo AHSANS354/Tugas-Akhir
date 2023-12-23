@@ -19,4 +19,9 @@ class Paket extends Model
     ];
 
     public $timestamps = false;
+
+    public function booking()
+{
+    return $this->hasMany(Booking::class, 'paket_id');
+}
 }

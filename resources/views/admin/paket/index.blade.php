@@ -23,6 +23,7 @@
                         <th scope="col">Keramas</th>
                         <th scope="col">Tonic</th>
                         <th scope="col">Creambath</th>
+                        <th scope="col">Harga</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -35,6 +36,7 @@
                         <td>@if($pkt->keramas == 1) Iya @else Tidak @endif</td>
                         <td>@if($pkt->tonic == 1) Iya @else Tidak @endif</td>
                         <td>@if($pkt->creambath == 1) Iya @else Tidak @endif</td>
+                        <td>Rp.{{number_format($pkt->harga,0,',','.')}}</td>
                         <td class="align-middle d-flex justify-content-center gap-4">
                             <a href="{{url('admin/paket/show/'.$pkt->id)}}" class="text-info">
                                 <i class="fas fa-eye"></i>
